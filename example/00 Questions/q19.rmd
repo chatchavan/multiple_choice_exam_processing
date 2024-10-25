@@ -1,0 +1,18 @@
+
+Question
+========
+Q
+
+Answerlist
+----------
+* Correct
+* x
+* y
+
+
+Meta-information
+================
+exname: Question 19
+extype: schoice
+exsolution: 100
+exshuffle: 3
