@@ -46,6 +46,7 @@ exams2nops(
   logo = NULL,
   blank = 0,
   duplex = FALSE,
+  showpoints = TRUE,
   twocolumn = TRUE)
 
 

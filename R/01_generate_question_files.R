@@ -28,6 +28,7 @@ exname: Question %d
 extype: schoice
 exsolution: 100
 exshuffle: 3
+expoints: 1
 "
 
 #-------------------------------------------------------------------------------
