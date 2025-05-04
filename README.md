@@ -2,6 +2,30 @@
 
 A worked out template for processing the multiple-choice exam scans using the [exams package](https://www.r-exams.org/)
 
+## Usage
+
+1. Put the questions in the `input/01 Questions` folder. 
+See each `.md` file for how to specify the questions. 
+(If you need to generate a template of `.rmd` file, use `R/01_generate_question_files.R`).
+Important meta-information fields are listed in a section below.
+
+2. Name the files such that when sorting by file name, the first question appears first. (E.g., prefix with 01, 02, 03).
+The order of the question file name corresponds to the question ID in the `idx` parameter in `R/02_generate_exam_template.R`.
+
+3. Use `R/02_generate_exam_template.R` to generate answer sheets for students to fill in.
+See the beginning of the file for the parameter to change such as exam title.
+Also, look for the custom question order section to adjust the order.
+
+3. After the exam, scan the sheets and use `03_process_scanned_sheets.R`.
+
+
+
+## Question specification meta-information
+
+`extype: schoice` single-choice
+`exsolution: 100` is a binary coding of the answer alternatives. The value `100` means that the first item on in the `Answerlist` is the correct answer.
+`exshuffle: 3` means `1` correct answer + `2` wrong answers are sampled and used
+
 
 ## Session Info
 ```
