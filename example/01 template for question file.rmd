@@ -2,6 +2,8 @@
 Question
 ========
 Q
+\
+![](image.pdf)
 
 Answerlist
 ----------
@@ -12,7 +14,7 @@ Answerlist
 
 Meta-information
 ================
-exname: Question 20
+exname: Question 1
 extype: schoice
 exsolution: 100
 exshuffle: 3
