@@ -14,6 +14,8 @@ question_template <- "
 Question
 ========
 Q
+\
+![](image.pdf)
 
 Answerlist
 ----------
