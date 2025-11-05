@@ -9,13 +9,14 @@ options(exams_tex = "tools") # use LaTeX that was installed outside R
 
 n_questions <- 20      # max. 45 questions (limit of the `exams` package)
 n_choice <- 3          # Note: If changing the number of choices, edit the "Answerlist", "exsolution", and "exshuffle" in the exam Markdown files to match
-exam_title <- "Empirical Quantitative Methods in Computer Science"
-exam_date <- "2025-05-06"
+exam_title <- "(Course Title)"
+exam_date <- "2025-05-06"  # format YYYY-MM-DD
 student_id_length <- 8 # UZH: 12-345-678
+the_institution = "University of Zurich"
 
-question_file_path <- "/Users/chat/Library/Mobile Documents/com~apple~CloudDocs/_Projects/Projects and roles/IfI Lecturer - role/QUANT - IfI course/Exam/QUANT Exam FS25 - Obsidian/Questions"
-image_file_path <- "/Users/chat/Library/Mobile Documents/com~apple~CloudDocs/_Projects/Projects and roles/IfI Lecturer - role/QUANT - IfI course/Exam/QUANT Exam FS25 - Obsidian/Ψ Supports/ΩΩ Attachments"
-output_root_path <- "output/01 Generated exam answersheet"
+question_file_path <- "workspace/01 Questions/"
+image_file_path <- "workspace/02 Images/"
+output_root_path <- "workspace/03 Generated exam answersheet"
 
 #-------------------------------------------------------------------------------
 # custom question order for each version of the exam
@@ -31,13 +32,15 @@ question_order <- tribble(
 # load question files
 question_file_paths <- dir_ls(question_file_path, type = "file", regexp = "[.]md$")
 
+image_file_path_abs <- path_abs(here::here(image_file_path))
+
 #-------------------------------------------------------------------------------
 # check consistency
 
 # ensure that the length of question files is the same as `n_questions`
 assert_that(length(question_file_paths) == n_questions, msg = "Some question-indices rows do not have all possible question indices")
 
-# ensure that no question idex were missing in the manual shuflling
+# ensure that no question index were missing in the manual shuffling
 sorted_indices <- 1:n_questions
 question_order |> 
   mutate(sorted_match = map_lgl(question_indices, \(x) all(sort(x) == sorted_indices))) |> 
@@ -57,15 +60,15 @@ generate_exam <- function(the_question_paths, the_answersheet_id) {
     the_question_paths,
     dir = path_output,
     startid = the_answersheet_id,
-    # n = n_answer_sheets,   # number of unique exam ID versions to generate (cannot be used if the question order is manually customized)
+    # n = n_answer_sheets,   # number of unique exam ID versions to generate (Not used because the question order is manually customized)
     nchoice = n_choice,
     reglength = student_id_length,
-    inputs = dir_ls(image_file_path),
+    inputs = dir_ls(image_file_path_abs),
     
     # appearance 
     title = exam_title,
     date = exam_date,
-    institution = "University of Zurich",
+    institution = the_institution,
     logo = NULL,
     blank = 0,
     duplex = FALSE,
@@ -76,7 +79,7 @@ generate_exam <- function(the_question_paths, the_answersheet_id) {
 }
 
 #-------------------------------------------------------------------------------
-# 
+# main()
 
 the_seed <- 123
 set.seed(the_seed)
