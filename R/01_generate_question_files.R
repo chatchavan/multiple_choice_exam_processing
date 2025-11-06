@@ -17,9 +17,13 @@ This is the test question %d
 
 Answerlist
 ----------
-* Correct
-* x
-* y
+- Correct
+- x
+- y
+
+Solution
+========
+(TODO explanation)
 
 
 Meta-information
@@ -35,15 +39,19 @@ expoints: 1
 q_text_first <- "
 Question
 ========
-This is the test question 1
+This is the test __question 1__
 \
 ![](q1_image.pdf)
 
 Answerlist
 ----------
-* Correct
-* x
-* y
+- Correct
+- x
+- y
+
+Solution
+========
+(TODO explanation)
 
 
 Meta-information
