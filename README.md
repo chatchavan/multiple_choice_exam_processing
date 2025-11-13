@@ -16,9 +16,17 @@ The order of the question file name corresponds to the question ID in the `quest
 See the beginning of the file for the parameter to change such as exam title.
 Also, look for the custom question order section to adjust the order.
 
-3. After the exam, scan the sheets and use `03_process_scanned_sheets.R`.
+3. After the exam, scan the sheets in grey scale and use `R/03_process_scanned_sheets.R`.
    - In the output `nops_eval.csv`, column "points" are the score. The column "mark" is the grade. Ignore it.
+   - The `nops_eval.zip` contains HTML file that can be sent to students to check the correctness of mark recognition. But it also shows "mark", which can be confusing for students.
 
+4. The code `04_combine_output_process_html.R` combine the `nops_eval.csv` from all versions of the exam as well as do the following clean-up for the HTML files.
+   - Remove `mark`
+   - Add full points
+   - Organize the HTML files into folders according to the student `id` specified  in the `R/04 Student info.csv`
+   
+5. For the exam viewing, use  `R/05_Generate_solution_sheets.R` to generate the solution sheet for all versions of the exam for students to review.
+   - Note that  the parameters and the random seeds duplicate those in `R/03_process_scanned_sheets.R`. In the future, I'll figure out how to extract information from the `metainfo.rds` that were generated for each version of the exam.
 
 ## Example files
 The subfolder `workspace-example` provide example files for both input and output
