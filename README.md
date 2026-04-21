@@ -16,7 +16,12 @@ The order of the question file name corresponds to the question ID in the `quest
 See the beginning of the file for the parameter to change such as exam title.
 Also, look for the custom question order section to adjust the order.
 
-3. After the exam, scan the sheets in grey scale and use `R/03_process_scanned_sheets.R`.
+3. After the exam:
+   3.1 Split the exam, one version per batch.
+   3.2 Scan the sheets in grey scale PDF. One file per version. Put as `05 Exam Scan - 20101.pdf`
+
+
+3.3 use `R/03_process_scanned_sheets.R`.
    - In the output `nops_eval.csv`, column "points" are the score. The column "mark" is the grade. Ignore it.
    - The `nops_eval.zip` contains HTML file that can be sent to students to check the correctness of mark recognition. But it also shows "mark", which can be confusing for students.
 
