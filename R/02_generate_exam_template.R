@@ -38,7 +38,10 @@ image_file_path_abs <- path_abs(here::here(image_file_path))
 # check consistency
 
 # ensure that the length of question files is the same as `n_questions`
-assert_that(length(question_file_paths) == n_questions, msg = "Some question-indices rows do not have all possible question indices")
+if(length(question_file_paths) != n_questions) {
+  warning("Some question files are not used")
+}
+  
 
 # ensure that no question index were missing in the manual shuffling
 sorted_indices <- 1:n_questions
