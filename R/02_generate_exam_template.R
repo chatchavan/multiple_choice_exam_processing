@@ -64,6 +64,7 @@ generate_exam <- function(the_question_paths, the_answersheet_id) {
     nchoice = n_choice,
     reglength = student_id_length,
     inputs = dir_ls(image_file_path_abs),
+    language = "templates/language-en-custom.dcf",  # custom terminology
     
     # appearance 
     title = exam_title,
