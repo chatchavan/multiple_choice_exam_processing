@@ -16,6 +16,8 @@ The order of the question file name corresponds to the question ID in the `quest
 See the beginning of the file for the parameter to change such as exam title.
 Also, look for the custom question order section to adjust the order.
 
+   - If you have open questions, save the open question as `qOpen.pdf` in the same path and uncomment the code that mentioned this file name accordingly.
+
 3. After the exam:
    3.1 Split the exam, one version per batch.
    3.2 Scan the sheets in grey scale PDF. One file per version. Put as `05 Exam Scan - 20101.pdf`

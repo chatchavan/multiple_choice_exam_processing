@@ -66,6 +66,9 @@ generate_exam <- function(the_question_paths, the_answersheet_id) {
     inputs = dir_ls(image_file_path_abs),
     language = "templates/language-en-custom.dcf",  # custom terminology
     
+    # open question
+    pages = path(question_file_path, "qOpen.pdf"),
+    
     # appearance 
     title = exam_title,
     date = exam_date,
