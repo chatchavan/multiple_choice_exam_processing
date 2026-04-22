@@ -3,11 +3,8 @@ library(fs)
 library("exams")
 options(exams_tex = "tools") # use LaTeX that was installed outside R
 
-n_questions <- 20      # max. 45 questions (limit of the `exams` package)
-n_choice <- 3          # Note: If changing the number of choices, edit the "Answerlist", "exsolution", and "exshuffle" in the exam Markdown files to match
 exam_title <- "Fundamentals of People-Oriented Computing"
 exam_date <- "2025-11-07"  # format YYYY-MM-DD
-student_id_length <- 8 # UZH: 12-345-678
 the_institution = "University of Zurich"
 
 question_file_path <- "/Users/chat/Library/Mobile Documents/com~apple~CloudDocs/_Projects/Projects and roles/IfI Lecturer - role/FPOC - IfI course/Exam/01 FPOC Exam 2025 - Obsidian"
@@ -48,27 +45,6 @@ generate_solution <- function(the_question_paths, the_answersheet_id) {
     header = list(ID = the_answersheet_id, Date = exam_date, Title = exam_title, Institution = the_institution)
     
   )
-  # 
-  # exams2nops(
-  #   the_question_paths,
-  #   dir = path_output,
-  #   startid = the_answersheet_id,
-  #   # n = n_answer_sheets,   # number of unique exam ID versions to generate (Not used because the question order is manually customized)
-  #   nchoice = n_choice,
-  #   reglength = student_id_length,
-  #   inputs = dir_ls(image_file_path_abs),
-  #   
-  #   # appearance 
-  #   title = exam_title,
-  #   date = exam_date,
-  #   institution = the_institution,
-  #   logo = NULL,
-  #   blank = 0,
-  #   duplex = FALSE,
-  #   showpoints = TRUE,
-  #   twocolumn = FALSE,
-  #   header = "\\renewenvironment{question}{\\item \\begin{samepage}}{\\end{samepage}}" # prevent page-break from a question
-  # )  
 }
 
 #-------------------------------------------------------------------------------

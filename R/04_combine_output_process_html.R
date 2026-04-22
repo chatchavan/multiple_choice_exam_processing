@@ -10,6 +10,8 @@ path_html <- path(path_combined, "HTML")
 html_file_name <- "midterm_part_1.html"
 
 full_points <-  25
+dir_create(path_eval, recurse = TRUE)
+dir_create(path_html, recurse = TRUE)
 
 #===============================================================================
 # combine CSV files
@@ -102,7 +104,7 @@ dir_ls(
     path = path_html,
     type = "file",
     pattern = "\\.html$",
-    recursive = TRUE,
+    recurse = TRUE,
     full.names = TRUE
   ) |> 
     walk(process_html_file)
