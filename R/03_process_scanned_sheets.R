@@ -17,23 +17,6 @@ register_clean_path <- path(root_path, "04.1 Student info clean.csv")
 
 dir_create(processed_zip_path, recurse = TRUE)
 dir_create(eval_output_path, recurse = TRUE)
-#-------------------------------------------------------------------------------
-# process the scan
-
-scan_results <- 
-  nops_scan(exam_scan_path,  
-            verbose = TRUE,
-            dir = processed_zip_path)
-
-# output zip path
-output_zip_path <- 
-  Sys.glob(
-    path(root_path, "06 Processed zip", "nops_scan_*.zip")
-  )
-
-# check and manually fix problems
-nops_fix(scans = output_zip_path)
-
 
 #-------------------------------------------------------------------------------
 # prep register into the right form
@@ -53,6 +36,25 @@ assertthat::see_if(all(str_length(reg_df$registration) == student_id_length))
 
 # use semi-colon
 write_delim(reg_df, register_clean_path, delim = ";")
+
+
+
+#-------------------------------------------------------------------------------
+# process the scan
+
+scan_results <- 
+  nops_scan(exam_scan_path,  
+            verbose = TRUE,
+            dir = processed_zip_path)
+
+# output zip path
+output_zip_path <- 
+  Sys.glob(
+    path(root_path, "06 Processed zip", "nops_scan_*.zip")
+  )
+
+# check and manually fix problems
+nops_fix(scans = output_zip_path)
 
 #-------------------------------------------------------------------------------
 # evaluation
